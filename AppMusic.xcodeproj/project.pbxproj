@@ -13,6 +13,11 @@
 		5DA05E7228F80115005F95E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA05E7028F80115005F95E8 /* Main.storyboard */; };
 		5DA05E7428F80116005F95E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DA05E7328F80116005F95E8 /* Assets.xcassets */; };
 		5DA05E7728F80116005F95E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA05E7528F80116005F95E8 /* LaunchScreen.storyboard */; };
+		5DA05E8228F8F2FA005F95E8 /* TongPhuSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5DA05E8128F8F2FA005F95E8 /* TongPhuSong.mp3 */; };
+		5DA05E8428F8F494005F95E8 /* BietTimDauSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5DA05E8328F8F493005F95E8 /* BietTimDauSong.mp3 */; };
+		5DA05E8628F8F49B005F95E8 /* VoTanSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5DA05E8528F8F49B005F95E8 /* VoTanSong.mp3 */; };
+		5DA05E8928F93C9B005F95E8 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA05E8828F93C9B005F95E8 /* SongModel.swift */; };
+		5DA05E8B28F93EC7005F95E8 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA05E8A28F93EC7005F95E8 /* PlayerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		5DA05E7328F80116005F95E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DA05E7628F80116005F95E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DA05E7828F80116005F95E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DA05E8128F8F2FA005F95E8 /* TongPhuSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TongPhuSong.mp3; sourceTree = "<group>"; };
+		5DA05E8328F8F493005F95E8 /* BietTimDauSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BietTimDauSong.mp3; sourceTree = "<group>"; };
+		5DA05E8528F8F49B005F95E8 /* VoTanSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = VoTanSong.mp3; sourceTree = "<group>"; };
+		5DA05E8828F93C9B005F95E8 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
+		5DA05E8A28F93EC7005F95E8 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +66,10 @@
 		5DA05E6928F80115005F95E8 /* AppMusic */ = {
 			isa = PBXGroup;
 			children = (
+				5DA05E8728F93C77005F95E8 /* Model */,
+				5DA05E7E28F8F2D8005F95E8 /* Music */,
 				5DA05E6A28F80115005F95E8 /* AppDelegate.swift */,
+				5DA05E8A28F93EC7005F95E8 /* PlayerManager.swift */,
 				5DA05E6C28F80115005F95E8 /* SceneDelegate.swift */,
 				5DA05E6E28F80115005F95E8 /* ViewController.swift */,
 				5DA05E7028F80115005F95E8 /* Main.storyboard */,
@@ -65,6 +78,24 @@
 				5DA05E7828F80116005F95E8 /* Info.plist */,
 			);
 			path = AppMusic;
+			sourceTree = "<group>";
+		};
+		5DA05E7E28F8F2D8005F95E8 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				5DA05E8528F8F49B005F95E8 /* VoTanSong.mp3 */,
+				5DA05E8328F8F493005F95E8 /* BietTimDauSong.mp3 */,
+				5DA05E8128F8F2FA005F95E8 /* TongPhuSong.mp3 */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		5DA05E8728F93C77005F95E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5DA05E8828F93C9B005F95E8 /* SongModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +159,9 @@
 				5DA05E7728F80116005F95E8 /* LaunchScreen.storyboard in Resources */,
 				5DA05E7428F80116005F95E8 /* Assets.xcassets in Resources */,
 				5DA05E7228F80115005F95E8 /* Main.storyboard in Resources */,
+				5DA05E8628F8F49B005F95E8 /* VoTanSong.mp3 in Resources */,
+				5DA05E8428F8F494005F95E8 /* BietTimDauSong.mp3 in Resources */,
+				5DA05E8228F8F2FA005F95E8 /* TongPhuSong.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +172,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DA05E8B28F93EC7005F95E8 /* PlayerManager.swift in Sources */,
 				5DA05E6F28F80115005F95E8 /* ViewController.swift in Sources */,
 				5DA05E6B28F80115005F95E8 /* AppDelegate.swift in Sources */,
+				5DA05E8928F93C9B005F95E8 /* SongModel.swift in Sources */,
 				5DA05E6D28F80115005F95E8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,6 +331,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,6 +360,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
