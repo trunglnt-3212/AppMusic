@@ -17,12 +17,12 @@ final class DetailSongViewController: UIViewController {
     @IBOutlet private weak var prevButton: UIButton!
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var pausePlayButton: UIButton!
-    @IBOutlet private weak var sliderButton: UISlider!
+    @IBOutlet private weak var buttonSlider: UISlider!
     @IBOutlet private weak var timeLabel: UILabel!
     
-    private var isPlay: Bool = true
-    private var indexCurrentSong: Int = 0
-    private var listSong: [Song] = []
+    private var isPlay = true
+    private var currentIndex = 0
+    private var listSong = [Song]()
     private let playerManager = PlayerManager.shared
     private var currentTime: TimeInterval = 0
     private var timer: Timer?
@@ -39,20 +39,17 @@ final class DetailSongViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+        
         if self.isMovingFromParent {
             playerManager.stop()
         }
     }
     
-    func bindListSong(_ listSong: [Song]) {
+    func bindData(listSong: [Song], currentIndex: Int) {
         self.listSong = listSong
+        self.currentIndex = currentIndex
     }
-    
-    func bindIndexCurrentSong(_ indexCurrentSong: Int) {
-        self.indexCurrentSong = indexCurrentSong
-    }
-        
+
     private func configView() {
         self.navigationController?.navigationBar.tintColor = UIColor.white
     }
@@ -66,65 +63,71 @@ final class DetailSongViewController: UIViewController {
     
     private func updateInfoCurrentSong() {
         // Update in UI in App
-        songNameLabel.text = listSong[indexCurrentSong].name
-        songPerformerLabel.text = listSong[indexCurrentSong].performer
-        songImageView.image = UIImage(named: listSong[indexCurrentSong].image)
+        songNameLabel.text = listSong[currentIndex].name
+        songPerformerLabel.text = listSong[currentIndex].performer
+        songImageView.image = UIImage(named: listSong[currentIndex].image)
         pausePlayButton.setImage(UIImage(named: "icon_pause"), for: .normal)
         
-        playerManager.playSound(listSong[indexCurrentSong].audio)
-
+        playerManager.playSound(listSong[currentIndex].audio)
+        
         durationTime = setUpFormatTime(playerManager.getDuration())
         timeLabel.text = "00:00 / " + (durationTime ?? "00:00")
         timeLabel.textColor = .white
         
         // Update UI in Lock Screen
-        let image = UIImage(named: listSong[indexCurrentSong].image)!
-        let artwork = MPMediaItemArtwork.init(boundsSize: image.size, requestHandler: { (size) -> UIImage in
-                return image
+        guard let image = UIImage(named: listSong[currentIndex].image) else {
+            return
+        }
+        let artwork = MPMediaItemArtwork(boundsSize: image.size, requestHandler: { (size) -> UIImage in
+            return image
         })
         MPNowPlayingInfoCenter.default().nowPlayingInfo = [
-            MPMediaItemPropertyTitle: listSong[indexCurrentSong].name,
-            MPMediaItemPropertyArtist: listSong[indexCurrentSong].performer,
+            MPMediaItemPropertyTitle: listSong[currentIndex].name,
+            MPMediaItemPropertyArtist: listSong[currentIndex].performer,
             MPMediaItemPropertyArtwork: artwork
         ]
     }
     
     private func configPlayerTime() {
-        sliderButton.maximumValue = Float(playerManager.getDuration())
+        buttonSlider.maximumValue = Float(playerManager.getDuration())
         timer?.invalidate()
         timer = nil
-        timer = Timer.scheduledTimer(timeInterval: Double(Int(sliderButton.value)), target: self, selector: #selector(DetailSongViewController.updateSlider), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: Double(Int(buttonSlider.value)),
+                                     target: self,
+                                     selector: #selector(DetailSongViewController.updateSlider),
+                                     userInfo: nil,
+                                     repeats: true)
     }
     
     private func handlePlayOrPauseTap() {
-        if (isPlay){
+        if (isPlay) {
             pausePlayButton.setImage(UIImage(named: "icon_play"), for: .normal)
             currentTime = playerManager.getDeviceCurrentTime()
             playerManager.pause()
         }
-        else{
+        else {
             pausePlayButton.setImage(UIImage(named: "icon_pause"), for: .normal)
             playerManager.play()
         }
-        isPlay = !isPlay
+        isPlay.toggle()
     }
     
     private func handlePrevTap() {
-        switch indexCurrentSong {
+        switch currentIndex {
         case 0:
-            indexCurrentSong = listSong.count - 1
+            currentIndex = listSong.count - 1
         default:
-            indexCurrentSong -= 1
+            currentIndex -= 1
         }
         updateInfoCurrentSong()
     }
     
     private func handleNextTap() {
-        switch indexCurrentSong {
-            case listSong.count - 1:
-                indexCurrentSong = 0
-            default:
-                indexCurrentSong += 1
+        switch currentIndex {
+        case listSong.count - 1:
+            currentIndex = 0
+        default:
+            currentIndex += 1
         }
         updateInfoCurrentSong()
     }
@@ -138,31 +141,30 @@ final class DetailSongViewController: UIViewController {
     }
     
     @objc private func updateSlider() {
-        sliderButton.value = Float(playerManager.getCurrentTime())
+        buttonSlider.value = Float(playerManager.getCurrentTime())
         timeLabel.text = setUpFormatTime(playerManager.getCurrentTime()) + " / " + (durationTime ?? "00:00")
     }
-
-    @IBAction func prevTap(_ sender: Any) {
+    
+    @IBAction func prevTapAction(_ sender: Any) {
         handlePrevTap()
     }
     
-    @IBAction func nextTap(_ sender: Any) {
+    @IBAction func nextTapAction(_ sender: Any) {
         handleNextTap()
     }
     
-    @IBAction func didTapPauseOrPlay(_ sender: Any) {
+    @IBAction func didTapPauseOrPlayAction(_ sender: Any) {
         handlePlayOrPauseTap()
     }
     
-    @IBAction func didChangeSlider(_ sender: Any) {
+    @IBAction func didChangeSliderAction(_ sender: Any) {
         playerManager.stop()
-        playerManager.setCurrentTime(TimeInterval(sliderButton.value))
-        if(isPlay){
+        playerManager.setCurrentTime(TimeInterval(buttonSlider.value))
+        if (isPlay) {
             playerManager.prepareToPlay()
             playerManager.play()
         }
     }
-    
 }
 
 extension DetailSongViewController {
@@ -172,25 +174,29 @@ extension DetailSongViewController {
         addActionToPreviousCommand()
         addActionToNextCommand()
     }
-
+    
     private func addActionToPlayCommand() {
-            MPRemoteCommandCenter.shared().playCommand.isEnabled = true
-            MPRemoteCommandCenter.shared().playCommand.addTarget(self, action: #selector(playOrPauseButtonTapped))
+        MPRemoteCommandCenter.shared().playCommand.isEnabled = true
+        MPRemoteCommandCenter.shared().playCommand.addTarget(self,
+                                                             action: #selector(playOrPauseButtonTapped))
     }
-
+    
     private func addActionToPauseCommnd() {
         MPRemoteCommandCenter.shared().pauseCommand.isEnabled = true
-        MPRemoteCommandCenter.shared().pauseCommand.addTarget(self, action: #selector(playOrPauseButtonTapped))
+        MPRemoteCommandCenter.shared().pauseCommand.addTarget(self,
+                                                              action: #selector(playOrPauseButtonTapped))
     }
-
+    
     private func addActionToPreviousCommand() {
         MPRemoteCommandCenter.shared().previousTrackCommand.isEnabled = true
-        MPRemoteCommandCenter.shared().previousTrackCommand.addTarget(self, action: #selector(previousButtonTapped))
+        MPRemoteCommandCenter.shared().previousTrackCommand.addTarget(self,
+                                                                      action: #selector(previousButtonTapped))
     }
-
+    
     private func addActionToNextCommand() {
         MPRemoteCommandCenter.shared().nextTrackCommand.isEnabled = true
-        MPRemoteCommandCenter.shared().nextTrackCommand.addTarget(self, action: #selector(nextButtonTapped))
+        MPRemoteCommandCenter.shared().nextTrackCommand.addTarget(self,
+                                                                  action: #selector(nextButtonTapped))
     }
     
     @objc
@@ -211,5 +217,3 @@ extension DetailSongViewController {
         return .success
     }
 }
-
-

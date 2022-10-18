@@ -7,33 +7,19 @@
 
 import UIKit
 
-class MusicInfoTableViewCell: UITableViewCell {
+final class MusicInfoTableViewCell: UITableViewCell {
     
-    @IBOutlet private weak var performerSong: UILabel!
-    @IBOutlet private weak var nameSong: UILabel!
-    @IBOutlet private weak var imageSong: UIImageView!
+    @IBOutlet private weak var performerSongLable: UILabel!
+    @IBOutlet private weak var nameSongLabel: UILabel!
+    @IBOutlet private weak var imageSongImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
-    func bindImageSong(_ image: String) {
-        imageSong.image = UIImage(named: image)
+    func bindData(_ song: Song) {
+        imageSongImageView.image = UIImage(named: song.image)
+        nameSongLabel.text = song.name
+        performerSongLable.text = song.performer
     }
-    
-    func bindNameSong(_ name: String) {
-        nameSong.text = name
-    }
-    
-    func bindPerformerSong(_ performer: String) {
-        performerSong.text = performer
-    }
-    
 }

@@ -9,23 +9,23 @@ import UIKit
 
 final class ListSongViewController: UIViewController {
     
-    @IBOutlet private weak var listSongTable: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
-    private var listSong: [Song] = []
+    private var listSong = [Song]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
         initListSong()
-        listSongTable.reloadData()
+        tableView.reloadData()
     }
     
     private func configView() {
         navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Music Player"
-        listSongTable.register(UINib(nibName: "MusicInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "MusicInfoTableViewCell")
-        listSongTable.delegate = self
-        listSongTable.dataSource = self
+        tableView.register(UINib(nibName: "MusicInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "MusicInfoTableViewCell")
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     private func initListSong() {
@@ -33,7 +33,6 @@ final class ListSongViewController: UIViewController {
         listSong.append(Song(name: "Biet tim dau", performer: "Tuan Hung", image: "image_1_song", audio: "BietTimDauSong"))
         listSong.append(Song(name: "Vo tan", performer: "Trinh Thang Binh", image: "image_2_song", audio: "VoTanSong"))
     }
-
 }
 
 extension ListSongViewController: UITableViewDataSource, UITableViewDelegate {
@@ -42,20 +41,20 @@ extension ListSongViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MusicInfoTableViewCell", for: indexPath) as! MusicInfoTableViewCell
-        cell.bindNameSong(listSong[indexPath.row].name)
-        cell.bindPerformerSong(listSong[indexPath.row].performer)
-        cell.bindImageSong(listSong[indexPath.row].image)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MusicInfoTableViewCell",
+                                                       for: indexPath) as? MusicInfoTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.bindData(listSong[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailSongViewController = storyboard.instantiateViewController(withIdentifier: "DetailSongViewController") as! DetailSongViewController
-        detailSongViewController.bindListSong(listSong)
-        detailSongViewController.bindIndexCurrentSong(indexPath.row) 
+        guard let detailSongViewController = storyboard.instantiateViewController(withIdentifier: "DetailSongViewController") as? DetailSongViewController else {
+            return
+        }
+        detailSongViewController.bindData(listSong: listSong, currentIndex: indexPath.row)
         self.navigationController?.pushViewController(detailSongViewController, animated: true)
     }
-    
-    
 }

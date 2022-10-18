@@ -54,9 +54,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="imageSong" destination="YTp-8A-LxD" id="rhd-PA-vUW"/>
-                <outlet property="nameSong" destination="RBB-lH-c9S" id="oPU-vh-PBb"/>
-                <outlet property="performerSong" destination="ygk-TI-N48" id="fwX-Wh-HER"/>
+                <outlet property="imageSongImageView" destination="YTp-8A-LxD" id="Dec-10-PbP"/>
+                <outlet property="nameSongLabel" destination="RBB-lH-c9S" id="tz3-Ge-kcj"/>
+                <outlet property="performerSongLable" destination="ygk-TI-N48" id="Pkp-Nc-IKg"/>
             </connections>
             <point key="canvasLocation" x="-6.1538461538461533" y="15.995260663507109"/>
         </tableViewCell>
