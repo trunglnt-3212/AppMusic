@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5DA05E6B28F80115005F95E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA05E6A28F80115005F95E8 /* AppDelegate.swift */; };
 		5DA05E6D28F80115005F95E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA05E6C28F80115005F95E8 /* SceneDelegate.swift */; };
-		5DA05E6F28F80115005F95E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA05E6E28F80115005F95E8 /* ViewController.swift */; };
+		5DA05E6F28F80115005F95E8 /* DetailSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA05E6E28F80115005F95E8 /* DetailSongViewController.swift */; };
 		5DA05E7228F80115005F95E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA05E7028F80115005F95E8 /* Main.storyboard */; };
 		5DA05E7428F80116005F95E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DA05E7328F80116005F95E8 /* Assets.xcassets */; };
 		5DA05E7728F80116005F95E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA05E7528F80116005F95E8 /* LaunchScreen.storyboard */; };
@@ -18,13 +18,30 @@
 		5DA05E8628F8F49B005F95E8 /* VoTanSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5DA05E8528F8F49B005F95E8 /* VoTanSong.mp3 */; };
 		5DA05E8928F93C9B005F95E8 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA05E8828F93C9B005F95E8 /* SongModel.swift */; };
 		5DA05E8B28F93EC7005F95E8 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA05E8A28F93EC7005F95E8 /* PlayerManager.swift */; };
+		5DA05E8D28FCFD6F005F95E8 /* ListSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA05E8C28FCFD6F005F95E8 /* ListSongViewController.swift */; };
+		5DA05E9328FD00C7005F95E8 /* MusicInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA05E9128FD00C7005F95E8 /* MusicInfoTableViewCell.swift */; };
+		5DA05E9428FD00C7005F95E8 /* MusicInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DA05E9228FD00C7005F95E8 /* MusicInfoTableViewCell.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		5DA05E9528FD2BE3005F95E8 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
 		5DA05E6728F80115005F95E8 /* AppMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA05E6A28F80115005F95E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DA05E6C28F80115005F95E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5DA05E6E28F80115005F95E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5DA05E6E28F80115005F95E8 /* DetailSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSongViewController.swift; sourceTree = "<group>"; };
 		5DA05E7128F80115005F95E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5DA05E7328F80116005F95E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DA05E7628F80116005F95E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -34,6 +51,9 @@
 		5DA05E8528F8F49B005F95E8 /* VoTanSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = VoTanSong.mp3; sourceTree = "<group>"; };
 		5DA05E8828F93C9B005F95E8 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
 		5DA05E8A28F93EC7005F95E8 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
+		5DA05E8C28FCFD6F005F95E8 /* ListSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSongViewController.swift; sourceTree = "<group>"; };
+		5DA05E9128FD00C7005F95E8 /* MusicInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicInfoTableViewCell.swift; sourceTree = "<group>"; };
+		5DA05E9228FD00C7005F95E8 /* MusicInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicInfoTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +91,8 @@
 				5DA05E6A28F80115005F95E8 /* AppDelegate.swift */,
 				5DA05E8A28F93EC7005F95E8 /* PlayerManager.swift */,
 				5DA05E6C28F80115005F95E8 /* SceneDelegate.swift */,
-				5DA05E6E28F80115005F95E8 /* ViewController.swift */,
+				5DA05E6E28F80115005F95E8 /* DetailSongViewController.swift */,
+				5DA05E8C28FCFD6F005F95E8 /* ListSongViewController.swift */,
 				5DA05E7028F80115005F95E8 /* Main.storyboard */,
 				5DA05E7328F80116005F95E8 /* Assets.xcassets */,
 				5DA05E7528F80116005F95E8 /* LaunchScreen.storyboard */,
@@ -93,9 +114,19 @@
 		5DA05E8728F93C77005F95E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5DA05E8E28FD006A005F95E8 /* MusicInfoCell */,
 				5DA05E8828F93C9B005F95E8 /* SongModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5DA05E8E28FD006A005F95E8 /* MusicInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				5DA05E9128FD00C7005F95E8 /* MusicInfoTableViewCell.swift */,
+				5DA05E9228FD00C7005F95E8 /* MusicInfoTableViewCell.xib */,
+			);
+			path = MusicInfoCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +141,7 @@
 				5DA05E6528F80115005F95E8 /* Resources */,
 			);
 			buildRules = (
+				5DA05E9528FD2BE3005F95E8 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -162,6 +194,7 @@
 				5DA05E8628F8F49B005F95E8 /* VoTanSong.mp3 in Resources */,
 				5DA05E8428F8F494005F95E8 /* BietTimDauSong.mp3 in Resources */,
 				5DA05E8228F8F2FA005F95E8 /* TongPhuSong.mp3 in Resources */,
+				5DA05E9428FD00C7005F95E8 /* MusicInfoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,9 +205,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DA05E9328FD00C7005F95E8 /* MusicInfoTableViewCell.swift in Sources */,
 				5DA05E8B28F93EC7005F95E8 /* PlayerManager.swift in Sources */,
-				5DA05E6F28F80115005F95E8 /* ViewController.swift in Sources */,
+				5DA05E6F28F80115005F95E8 /* DetailSongViewController.swift in Sources */,
 				5DA05E6B28F80115005F95E8 /* AppDelegate.swift in Sources */,
+				5DA05E8D28FCFD6F005F95E8 /* ListSongViewController.swift in Sources */,
 				5DA05E8928F93C9B005F95E8 /* SongModel.swift in Sources */,
 				5DA05E6D28F80115005F95E8 /* SceneDelegate.swift in Sources */,
 			);

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="136" id="KGk-i7-Jjw" customClass="MusicInfoTableViewCell" customModule="AppMusic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YTp-8A-LxD">
+                        <rect key="frame" x="0.0" y="8" width="120" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="YTp-8A-LxD" secondAttribute="height" multiplier="1:1" id="6Ap-H9-Dpq"/>
+                            <constraint firstAttribute="width" constant="120" id="h93-To-rV4"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBB-lH-c9S">
+                        <rect key="frame" x="127.99999999999999" y="8" width="51.333333333333329" height="24"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygk-TI-N48">
+                        <rect key="frame" x="127.99999999999999" y="40" width="35.333333333333329" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="YTp-8A-LxD" secondAttribute="bottom" constant="8" id="1RB-M0-dDt"/>
+                    <constraint firstItem="RBB-lH-c9S" firstAttribute="leading" secondItem="YTp-8A-LxD" secondAttribute="trailing" constant="8" symbolic="YES" id="5KW-Pu-NFI"/>
+                    <constraint firstItem="RBB-lH-c9S" firstAttribute="top" secondItem="YTp-8A-LxD" secondAttribute="top" id="Hus-Xh-kIs"/>
+                    <constraint firstItem="RBB-lH-c9S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="LGH-AZ-Wm2"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ygk-TI-N48" secondAttribute="trailing" constant="8" id="SWL-aN-zFf"/>
+                    <constraint firstItem="ygk-TI-N48" firstAttribute="top" secondItem="RBB-lH-c9S" secondAttribute="bottom" constant="8" id="bse-Tg-i53"/>
+                    <constraint firstItem="ygk-TI-N48" firstAttribute="leading" secondItem="YTp-8A-LxD" secondAttribute="trailing" constant="8" symbolic="YES" id="h1d-uU-kSM"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ygk-TI-N48" secondAttribute="bottom" id="i55-Ig-noa"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RBB-lH-c9S" secondAttribute="trailing" constant="8" id="rCI-EU-LBF"/>
+                    <constraint firstItem="YTp-8A-LxD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="tFP-VT-DNu"/>
+                    <constraint firstItem="YTp-8A-LxD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="uaI-yu-7nK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imageSongImageView" destination="YTp-8A-LxD" id="Dec-10-PbP"/>
+                <outlet property="nameSongLabel" destination="RBB-lH-c9S" id="tz3-Ge-kcj"/>
+                <outlet property="performerSongLable" destination="ygk-TI-N48" id="Pkp-Nc-IKg"/>
+            </connections>
+            <point key="canvasLocation" x="-6.1538461538461533" y="15.995260663507109"/>
+        </tableViewCell>
+    </objects>
+</document>
